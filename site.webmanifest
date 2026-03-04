@@ -1,0 +1,17 @@
+{
+  "name": "Kemis Group of Companies",
+  "short_name": "Kemis Group",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#0F1F3D",
+  "theme_color": "#0F1F3D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
+
