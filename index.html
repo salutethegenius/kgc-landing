@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kemis Group of Companies — Sovereign Infrastructure for a Digital Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=DM+Mono:wght@400;500&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0F1F3D;
+  --navy-mid:  #152844;
+  --navy-l:    #1E3A5F;
+  --gold:      #B8892A;
+  --gold-l:    #D4A850;
+  --gold-pale: #F5EDD6;
+  --gold-wash: #FAF5EA;
+  --warm:      #FAF8F5;
+  --parch:     #F2EDE3;
+  --stone:     #6B7C93;
+  --silver:    #8A9AB5;
+  --white:     #FFFFFF;
+  --border:    rgba(15,31,61,0.08);
+  --border-l:  rgba(255,255,255,0.07);
+  --glow:      rgba(184,137,42,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+/* ════ NAV ════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;padding:0 64px;height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(15,31,61,0.0);
+  transition:background 0.4s,backdrop-filter 0.4s,border-bottom 0.4s;
+}
+.nav.scrolled{
+  background:rgba(11,22,44,0.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(184,137,42,0.15);
+}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nav-wordmark{
+  font-family:'Cinzel',serif;font-size:17px;font-weight:600;
+  color:var(--white);letter-spacing:0.08em;line-height:1;
+}
+.nav-wordmark span{display:block;font-family:'DM Mono',monospace;font-size:8px;font-weight:400;color:var(--gold-l);letter-spacing:0.2em;text-transform:uppercase;margin-top:3px;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{
+  background:var(--gold);color:var(--navy);
+  padding:10px 22px;border-radius:3px;
+  font-family:'Cinzel',serif;font-size:12px;font-weight:600;
+  letter-spacing:0.1em;text-decoration:none;
+  transition:all 0.2s;border:none;cursor:pointer;
+}
+.nav-cta:hover{background:var(--gold-l);transform:translateY(-1px);}
+
+/* ════ HERO ════ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:120px 72px 100px;
+  position:relative;overflow:hidden;
+  background:var(--navy);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(ellipse 120% 80% at 60% 40%,rgba(184,137,42,0.06) 0%,transparent 55%),
+    radial-gradient(ellipse 60% 60% at 5% 90%,rgba(30,58,95,0.5) 0%,transparent 50%),
+    repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(255,255,255,0.012) 44px,rgba(255,255,255,0.012) 45px),
+    repeating-linear-gradient(90deg,transparent,transparent 88px,rgba(255,255,255,0.007) 88px,rgba(255,255,255,0.007) 89px);
+  pointer-events:none;
+}
+.hero-kmark{
+  position:absolute;right:-8%;top:50%;transform:translateY(-50%);
+  opacity:0.025;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--gold-l);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+  opacity:0;animation:fadeUp 0.8s ease 0.3s forwards;
+}
+.hero-eyebrow::before{content:'';display:block;width:36px;height:1px;background:var(--gold);}
+.hero-headline{
+  font-family:'Cinzel',serif;
+  font-size:clamp(40px,6.5vw,92px);
+  font-weight:700;line-height:1.0;
+  letter-spacing:0.02em;
+  color:var(--white);
+  max-width:900px;
+  opacity:0;animation:fadeUp 1s ease 0.5s forwards;
+  margin-bottom:24px;
+}
+.hero-headline em{
+  font-style:normal;color:var(--gold-l);
+  display:block;
+}
+.hero-sub{
+  font-size:17px;font-weight:300;
+  color:rgba(255,255,255,0.45);
+  max-width:560px;line-height:1.82;
+  margin-bottom:52px;
+  opacity:0;animation:fadeUp 0.8s ease 0.75s forwards;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:18px;
+  opacity:0;animation:fadeUp 0.8s ease 0.95s forwards;
+}
+.btn-primary{
+  background:var(--gold);color:var(--navy);
+  padding:15px 32px;border-radius:3px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  letter-spacing:0.1em;text-decoration:none;transition:all 0.25s;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 12px 32px rgba(184,137,42,0.25);}
+.btn-ghost{
+  color:rgba(255,255,255,0.55);
+  padding:15px 28px;border-radius:3px;
+  font-size:13px;font-weight:500;
+  letter-spacing:0.06em;text-decoration:none;
+  border:1px solid rgba(255,255,255,0.12);
+  transition:all 0.25s;
+}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,0.28);}
+.hero-scroll{
+  position:absolute;bottom:40px;right:72px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:0.2em;
+  color:rgba(255,255,255,0.2);text-transform:uppercase;
+  opacity:0;animation:fadeIn 1s ease 1.4s forwards;
+}
+.hero-scroll-line{
+  width:1px;height:52px;background:linear-gradient(to bottom,var(--gold),transparent);
+  animation:scrollPulse 2.5s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:0.8;}}
+
+/* Vertical count bar */
+.hero-stats-bar{
+  position:absolute;right:72px;bottom:160px;
+  display:flex;flex-direction:column;gap:16px;
+  opacity:0;animation:fadeIn 1s ease 1.2s forwards;
+}
+.hs-item{
+  display:flex;flex-direction:column;align-items:flex-end;gap:3px;
+}
+.hs-num{
+  font-family:'Cinzel',serif;font-size:28px;font-weight:700;
+  color:var(--gold-l);letter-spacing:0.04em;line-height:1;
+}
+.hs-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;
+}
+.hs-rule{width:100%;height:1px;background:rgba(255,255,255,0.06);}
+
+/* ════ SHARED ════ */
+.section{padding:112px 72px;}
+.section-inner{max-width:1200px;margin:0 auto;}
+
+.eyebrow{
+  font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--gold-l);margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.eyebrow.dark{color:var(--gold);}
+.eyebrow.dark::before{background:var(--gold);}
+
+.section-h{
+  font-family:'Cinzel',serif;
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:600;line-height:1.1;letter-spacing:0.04em;
+  color:var(--white);margin-bottom:20px;
+}
+.section-h.dark{color:var(--navy);}
+.section-h em{font-style:normal;color:var(--gold-l);}
+.section-h.dark em{color:var(--gold);}
+
+.section-p{
+  font-size:16px;font-weight:300;line-height:1.85;
+  color:rgba(255,255,255,0.5);max-width:600px;
+}
+.section-p.dark{color:var(--stone);}
+
+/* Fade-up animation trigger */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ════ MISSION PILLARS ════ */
+.mission{background:var(--navy-mid);}
+.mission-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;
+  margin-top:56px;
+}
+.pillar{
+  padding:48px 36px 44px;background:rgba(255,255,255,0.03);
+  border-top:2px solid var(--border-l);
+  transition:all 0.3s;cursor:default;
+}
+.pillar:hover{background:rgba(184,137,42,0.06);border-top-color:var(--gold);}
+.pillar-icon{font-size:28px;margin-bottom:20px;}
+.pillar-title{
+  font-family:'Cinzel',serif;font-size:18px;font-weight:600;
+  color:var(--white);letter-spacing:0.04em;margin-bottom:14px;line-height:1.2;
+}
+.pillar-desc{
+  font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);
+  line-height:1.82;
+}
+.pillar-tag{
+  font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:0.16em;
+  color:var(--gold);text-transform:uppercase;margin-top:24px;
+  padding-top:20px;border-top:1px solid var(--border-l);
+}
+
+/* ════ FOUNDER ════ */
+.founder{background:var(--navy);}
+.founder-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:96px;align-items:start;
+}
+.founder-left{}
+.founder-quote{
+  font-family:'Cinzel',serif;
+  font-size:clamp(26px,2.8vw,36px);
+  font-weight:500;color:var(--white);
+  line-height:1.35;letter-spacing:0.03em;
+  margin-bottom:36px;
+  padding-left:28px;
+  border-left:3px solid var(--gold);
+}
+.founder-quote em{font-style:normal;color:var(--gold-l);}
+.founder-body{
+  font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);
+  line-height:1.9;margin-bottom:28px;
+}
+.founder-body strong{color:rgba(255,255,255,0.8);font-weight:500;}
+.founder-sig{
+  margin-top:40px;padding-top:32px;
+  border-top:1px solid var(--border-l);
+  display:flex;align-items:center;gap:18px;
+}
+.founder-av{
+  width:56px;height:56px;background:var(--gold);
+  border-radius:3px;display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--navy);
+  flex-shrink:0;
+}
+.founder-name{
+  font-family:'Cinzel',serif;font-size:15px;font-weight:600;
+  color:var(--white);letter-spacing:0.04em;
+}
+.founder-title{
+  font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-l);
+  letter-spacing:0.14em;margin-top:4px;
+}
+.founder-right{}
+.founder-bullets{list-style:none;display:flex;flex-direction:column;gap:0;}
+.founder-bullet{
+  padding:22px 0;
+  border-bottom:1px solid var(--border-l);
+  display:flex;align-items:flex-start;gap:16px;
+}
+.founder-bullet:first-child{border-top:1px solid var(--border-l);}
+.fb-bullet{
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--gold);flex-shrink:0;margin-top:2px;
+}
+.fb-text{
+  font-size:14.5px;color:rgba(255,255,255,0.62);
+  line-height:1.7;font-weight:300;
+}
+.fb-text strong{color:rgba(255,255,255,0.85);font-weight:500;}
+.founder-links{
+  display:flex;gap:12px;margin-top:32px;
+}
+.founder-link{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;
+  color:var(--gold-l);text-decoration:none;
+  padding:8px 16px;border:1px solid rgba(184,137,42,0.25);
+  border-radius:3px;transition:all 0.2s;
+}
+.founder-link:hover{background:rgba(184,137,42,0.08);border-color:rgba(184,137,42,0.45);}
+
+/* ════ PORTFOLIO ════ */
+.portfolio{background:var(--warm);}
+.portfolio-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:end;margin-bottom:56px;
+}
+.portfolio-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px;
+}
+.product-card{
+  padding:32px 28px 28px;background:white;
+  border-bottom:3px solid transparent;
+  transition:all 0.3s;cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.product-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s;
+}
+.product-card:hover::before{transform:scaleX(1);}
+.product-card:hover{box-shadow:0 6px 28px rgba(15,31,61,0.1);transform:translateY(-3px);}
+.pc-icon{font-size:22px;margin-bottom:14px;}
+.pc-tag{
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.18em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:8px;
+}
+.pc-name{
+  font-family:'Cinzel',serif;font-size:14px;font-weight:600;
+  color:var(--navy);letter-spacing:0.04em;margin-bottom:8px;line-height:1.2;
+}
+.pc-desc{font-size:12.5px;color:var(--stone);line-height:1.65;}
+.pc-badge{
+  position:absolute;top:16px;right:16px;
+  font-family:'DM Mono',monospace;font-size:7.5px;
+  letter-spacing:0.1em;padding:3px 8px;border-radius:20px;
+  text-transform:uppercase;
+}
+.pc-badge.live{background:rgba(0,150,80,0.08);color:#1a8a4a;border:1px solid rgba(0,150,80,0.2);}
+.pc-badge.build{background:rgba(184,137,42,0.08);color:var(--gold);border:1px solid rgba(184,137,42,0.2);}
+.pc-badge.flagship{background:rgba(15,31,61,0.06);color:var(--navy);border:1px solid rgba(15,31,61,0.12);}
+
+/* Verity suite callout */
+.verity-callout{
+  background:var(--navy);margin-top:3px;padding:52px 56px;
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+}
+.vc-left h3{
+  font-family:'Cinzel',serif;font-size:22px;font-weight:600;
+  color:var(--white);letter-spacing:0.04em;margin-bottom:14px;
+  margin-top:12px;
+}
+.vc-left p{
+  font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);
+  line-height:1.85;
+}
+.vc-right{display:flex;flex-direction:column;gap:12px;}
+.vc-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border-l);border-radius:4px;
+  transition:background 0.2s;
+}
+.vc-item:hover{background:rgba(184,137,42,0.06);}
+.vc-item-icon{
+  width:32px;height:32px;background:rgba(184,137,42,0.1);
+  border:1px solid rgba(184,137,42,0.2);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+.vc-item-name{
+  font-family:'Cinzel',serif;font-size:12px;font-weight:500;
+  color:rgba(255,255,255,0.75);letter-spacing:0.04em;
+}
+.vc-item-desc{font-size:11px;color:rgba(255,255,255,0.28);margin-top:2px;}
+
+/* ════ WHY WE EXIST ════ */
+.why{background:var(--parch);}
+.why-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:96px;align-items:start;
+  margin-top:64px;
+}
+.why-stat-row{display:flex;flex-direction:column;gap:3px;margin-top:48px;}
+.why-stat{
+  display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+  padding:24px 28px;background:white;
+  border-left:3px solid transparent;transition:border-color 0.3s;
+}
+.why-stat:hover{border-left-color:var(--gold);}
+.ws-num{
+  font-family:'Cinzel',serif;font-size:36px;font-weight:700;
+  color:var(--gold);letter-spacing:0.02em;white-space:nowrap;line-height:1;
+}
+.ws-text{font-size:13.5px;color:var(--stone);line-height:1.7;}
+.ws-text strong{color:var(--navy);font-weight:600;}
+.why-right{}
+.why-comparison{display:flex;flex-direction:column;gap:3px;}
+.wc-col{padding:36px 32px;}
+.wc-col.before{background:rgba(15,31,61,0.04);border-left:2px solid rgba(15,31,61,0.12);}
+.wc-col.after{background:var(--gold-wash);border-left:2px solid var(--gold);}
+.wc-label{
+  font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:0.2em;
+  text-transform:uppercase;margin-bottom:18px;
+}
+.wc-col.before .wc-label{color:var(--stone);}
+.wc-col.after .wc-label{color:var(--gold);}
+.wc-items{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.wc-item{
+  font-size:13.5px;line-height:1.6;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.wc-col.before .wc-item{color:var(--stone);}
+.wc-col.before .wc-item::before{content:'×';color:rgba(232,99,58,0.7);font-family:'DM Mono',monospace;flex-shrink:0;}
+.wc-col.after .wc-item{color:var(--navy);}
+.wc-col.after .wc-item::before{content:'✓';color:var(--gold);font-family:'DM Mono',monospace;flex-shrink:0;}
+
+/* ════ VISION ════ */
+.vision{
+  background:var(--navy);
+  padding:128px 72px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.vision::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(184,137,42,0.07) 0%,transparent 60%);
+  pointer-events:none;
+}
+.vision-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
+.vision-kicker{
+  font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.28em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.vision-kicker::before,.vision-kicker::after{
+  content:'';display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;
+}
+.vision-headline{
+  font-family:'Cinzel',serif;
+  font-size:clamp(32px,4.5vw,58px);
+  font-weight:700;color:var(--white);
+  line-height:1.15;letter-spacing:0.03em;margin-bottom:28px;
+}
+.vision-headline em{font-style:normal;color:var(--gold-l);}
+.vision-sub{
+  font-size:17px;font-weight:300;color:rgba(255,255,255,0.45);
+  line-height:1.85;margin-bottom:56px;
+}
+.vision-milestones{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:3px;
+  text-align:left;margin-bottom:56px;
+}
+.vm{
+  padding:28px 24px;background:rgba(255,255,255,0.03);
+  border-top:1px solid var(--border-l);
+  transition:background 0.3s;
+}
+.vm:hover{background:rgba(184,137,42,0.06);}
+.vm-year{
+  font-family:'DM Mono',monospace;font-size:9px;
+  color:var(--gold);letter-spacing:0.14em;margin-bottom:10px;
+}
+.vm-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;font-weight:300;}
+.vm-text strong{color:rgba(255,255,255,0.8);font-weight:500;}
+
+/* ════ CAREERS ════ */
+.careers{background:var(--parch);}
+.careers-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;
+  align-items:end;margin-bottom:52px;
+}
+.roles-grid{display:flex;flex-direction:column;gap:3px;}
+.role-card{
+  display:grid;grid-template-columns:1fr auto;
+  gap:32px;align-items:start;
+  padding:36px 36px;background:white;
+  cursor:pointer;transition:all 0.3s;
+  border-left:3px solid transparent;
+}
+.role-card:hover{border-left-color:var(--gold);box-shadow:4px 0 24px rgba(15,31,61,0.06);}
+.role-card.open{}
+.rc-left{}
+.rc-tag{
+  font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:0.16em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:10px;
+}
+.rc-title{
+  font-family:'Cinzel',serif;font-size:18px;font-weight:600;
+  color:var(--navy);letter-spacing:0.03em;margin-bottom:10px;
+}
+.rc-desc{font-size:13.5px;color:var(--stone);line-height:1.7;max-width:540px;}
+.rc-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;padding-top:4px;}
+.rc-badge{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;
+  padding:5px 14px;border-radius:20px;text-transform:uppercase;
+  background:rgba(15,31,61,0.06);color:var(--navy);white-space:nowrap;
+}
+.rc-badge.hiring{background:rgba(0,130,70,0.08);color:#1a7a42;border:1px solid rgba(0,130,70,0.2);}
+.rc-apply{
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);
+  letter-spacing:0.1em;display:flex;align-items:center;gap:6px;
+  border:1px solid rgba(184,137,42,0.25);padding:7px 16px;
+  border-radius:3px;transition:all 0.2s;text-decoration:none;
+}
+.rc-apply:hover{background:rgba(184,137,42,0.08);}
+.roles-future{
+  margin-top:3px;padding:32px 36px;
+  background:rgba(15,31,61,0.04);
+  border-left:3px solid var(--border);
+}
+.rf-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;
+  color:var(--stone);text-transform:uppercase;margin-bottom:14px;
+}
+.rf-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.rf-chip{
+  font-size:12.5px;color:var(--stone);padding:6px 14px;
+  background:white;border:1px solid var(--border);border-radius:3px;
+}
+
+/* ════ CONTACT STRIP ════ */
+.contact-strip{
+  background:var(--gold);padding:80px 72px;
+  text-align:center;
+}
+.cs-kicker{
+  font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.25em;
+  color:rgba(15,31,61,0.5);text-transform:uppercase;margin-bottom:18px;
+}
+.cs-headline{
+  font-family:'Cinzel',serif;font-size:clamp(28px,4vw,48px);
+  font-weight:700;color:var(--navy);letter-spacing:0.04em;
+  line-height:1.1;margin-bottom:16px;
+}
+.cs-sub{
+  font-size:15px;color:rgba(15,31,61,0.55);font-weight:300;
+  line-height:1.7;margin-bottom:44px;max-width:480px;margin-left:auto;margin-right:auto;
+}
+.cs-actions{display:flex;align-items:center;justify-content:center;gap:16px;}
+.btn-navy{
+  background:var(--navy);color:var(--gold-l);
+  padding:16px 36px;border-radius:3px;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:600;
+  letter-spacing:0.1em;text-decoration:none;transition:all 0.25s;
+}
+.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px);}
+.btn-outline-navy{
+  background:transparent;color:var(--navy);
+  padding:16px 32px;border-radius:3px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-decoration:none;transition:all 0.25s;
+  border:2px solid rgba(15,31,61,0.3);
+}
+.btn-outline-navy:hover{border-color:var(--navy);}
+
+/* ════ FOOTER ════ */
+.footer{background:#080F1E;padding:72px 72px 40px;border-top:1px solid rgba(184,137,42,0.15);}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:56px;margin-bottom:56px;
+}
+.footer-brand{}
+.fb-mark{
+  font-family:'Cinzel',serif;font-size:20px;font-weight:700;
+  color:var(--white);letter-spacing:0.08em;margin-bottom:4px;
+}
+.fb-sub{
+  font-family:'DM Mono',monospace;font-size:8.5px;color:var(--gold);
+  letter-spacing:0.15em;margin-bottom:18px;
+}
+.fb-p{
+  font-size:13px;font-weight:300;color:rgba(255,255,255,0.28);
+  line-height:1.85;max-width:280px;margin-bottom:20px;
+}
+.fb-legal{
+  font-family:'DM Mono',monospace;font-size:8.5px;
+  color:rgba(255,255,255,0.14);letter-spacing:0.06em;line-height:1.9;
+}
+.footer-col-title{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.22em;
+  text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:20px;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.footer-links a{
+  font-size:13.5px;color:rgba(255,255,255,0.38);
+  text-decoration:none;transition:color 0.2s;
+}
+.footer-links a:hover{color:rgba(255,255,255,0.85);}
+.footer-bottom{
+  padding-top:28px;border-top:1px solid rgba(255,255,255,0.05);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-bottom p{
+  font-family:'DM Mono',monospace;font-size:9px;
+  color:rgba(255,255,255,0.15);letter-spacing:0.07em;
+}
+.footer-bottom p em{font-style:normal;color:var(--gold-l);}
+
+/* ════ ANIMATIONS ════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:1100px){
+  .nav{padding:0 28px;}
+  .hero{padding:0 28px 80px;}
+  .section{padding:80px 28px;}
+  .vision{padding:80px 28px;}
+  .founder-grid,.why-grid,.careers-intro,.portfolio-intro{grid-template-columns:1fr;gap:48px;}
+  .portfolio-grid{grid-template-columns:repeat(3,1fr);}
+  .mission-grid{grid-template-columns:1fr;}
+  .vision-milestones{grid-template-columns:repeat(2,1fr);}
+  .verity-callout{grid-template-columns:1fr;gap:36px;padding:36px 28px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
+  .footer{padding:56px 28px 32px;}
+  .contact-strip{padding:64px 28px;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+  .vision-milestones{grid-template-columns:1fr;}
+  .hero-stats-bar{display:none;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav-logo">
+    <svg width="38" height="38" viewBox="0 0 64 64" fill="none">
+      <rect x="14" y="10" width="7" height="44" rx="0.5" fill="white" opacity="0.88"/>
+      <path d="M 21 32 L 50 12" stroke="white" stroke-width="7.5" stroke-linecap="square" opacity="0.82"/>
+      <path d="M 21 32 L 50 52" stroke="white" stroke-width="7.5" stroke-linecap="square" opacity="0.82"/>
+      <circle cx="21" cy="32" r="6" fill="#D4A850"/>
+      <circle cx="21" cy="32" r="9.5" fill="none" stroke="#D4A850" stroke-width="1.2" opacity="0.28"/>
+      <circle cx="50" cy="12" r="3" fill="#D4A850" opacity="0.65"/>
+      <circle cx="50" cy="52" r="3" fill="#D4A850" opacity="0.65"/>
+    </svg>
+    <div class="nav-wordmark">
+      KEMIS
+      <span>Group of Companies</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#careers">Careers</a></li>
+  </ul>
+  <a href="#careers" class="nav-cta">Join the Build</a>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+
+  <!-- Oversized K watermark -->
+  <div class="hero-kmark">
+    <svg width="700" height="700" viewBox="0 0 100 100" fill="none" opacity="1">
+      <rect x="14" y="8" width="10" height="84" rx="0.5" fill="white"/>
+      <path d="M 24 50 L 88 10" stroke="white" stroke-width="11" stroke-linecap="square"/>
+      <path d="M 24 50 L 88 90" stroke="white" stroke-width="11" stroke-linecap="square"/>
+    </svg>
+  </div>
+
+  <div class="hero-stats-bar">
+    <div class="hs-item">
+      <div class="hs-num">13</div>
+      <div class="hs-label">Verticals</div>
+    </div>
+    <div class="hs-rule"></div>
+    <div class="hs-item">
+      <div class="hs-num">1</div>
+      <div class="hs-label">Mission</div>
+    </div>
+    <div class="hs-rule"></div>
+    <div class="hs-item">
+      <div class="hs-num">🇧🇸</div>
+      <div class="hs-label">Built here</div>
+    </div>
+  </div>
+
+  <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;width:100%;">
+    <div class="hero-eyebrow">🇧🇸 Built in Nassau. Built for The Bahamas.</div>
+    <h1 class="hero-headline">
+      Building Independent Digital<br>
+      Infrastructure <em>The Bahamas Needs</em>
+    </h1>
+    <p class="hero-sub">
+      Kemis Group of Companies designs and deploys locally run AI, payments,
+      communications, and education platforms that strengthen opportunity across
+      every island. Twelve verticals. One shared mission — to build technology
+      systems that reflect Bahamian realities and serve Bahamian people.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="7" height="9" rx="1"/><rect x="15" y="3" width="7" height="5" rx="1"/><rect x="15" y="12" width="7" height="9" rx="1"/><rect x="2" y="16" width="7" height="5" rx="1"/></svg>
+        See the Portfolio
+      </a>
+      <a href="#founder" class="btn-ghost">From the Founder →</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ════ MISSION ════ -->
+<section class="section mission" id="mission">
+  <div class="section-inner">
+    <div style="max-width:600px;" class="fade-up">
+      <div class="eyebrow">What we do</div>
+      <h2 class="section-h">Independent Digital Infrastructure,<br><em>Built Locally</em></h2>
+      <p class="section-p">
+        KGC develops practical, locally managed digital systems that help The Bahamas responsibly
+        manage data, expand economic participation, and prepare for the AI era. We are not
+        replacing institutions. We are strengthening the digital tools they rely on.
+      </p>
+    </div>
+    <div class="mission-grid">
+      <div class="pillar fade-up">
+        <div class="pillar-icon">🧠</div>
+        <div class="pillar-title">Local AI Systems</div>
+        <p class="pillar-desc">
+          We build and train AI platforms grounded in Bahamian context. VerityOS runs locally and
+          is designed for schools, businesses, and public sector use. When intelligence systems
+          reflect local realities, they become more accurate, more useful, and more trustworthy.
+        </p>
+        <div class="pillar-tag">VerityOS · VerityLite</div>
+      </div>
+      <div class="pillar fade-up" style="transition-delay:0.1s;">
+        <div class="pillar-icon">📡</div>
+        <div class="pillar-title">Resilient, Offline First Technology</div>
+        <p class="pillar-desc">
+          Connectivity is not equal across every island. VerityLite is designed to function even
+          when internet access is limited. Digital access should not depend on perfect
+          infrastructure.
+        </p>
+        <div class="pillar-tag">VerityLite · KemisEmail</div>
+      </div>
+      <div class="pillar fade-up" style="transition-delay:0.2s;">
+        <div class="pillar-icon">🏛️</div>
+        <div class="pillar-title">Community Partnerships</div>
+        <p class="pillar-desc">
+          Every initiative connects with schools, entrepreneurs, civic groups, and ministries.
+          We build in collaboration, not isolation. The goal is long term capability, not
+          short term disruption.
+        </p>
+        <div class="pillar-tag">Kemis Academy · BahamasOpenData</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOUNDER ════ -->
+<section class="section founder" id="founder">
+  <div class="section-inner">
+    <div class="founder-grid">
+      <div class="founder-left fade-up">
+        <div class="eyebrow">The Founder's Desk</div>
+        <blockquote class="founder-quote">
+          “I am not trying to recreate<br>Silicon Valley. I am building<br><em>Bahamian excellence.</em>”
+        </blockquote>
+        <p class="founder-body">
+          I grew up here. I understand both the talent and the gaps. After living abroad and
+          seeing what strong infrastructure can do, I became convinced that The Bahamas does
+          not lack ability. We need stronger digital systems, shared knowledge, and coordinated
+          opportunity.
+        </p>
+        <p class="founder-body">
+          Artificial intelligence is not foreign. It is a tool. And if we participate in shaping
+          it, we ensure it reflects our values, our laws, and our realities.
+        </p>
+        <p class="founder-body">
+          This work is not about control. It is about contribution. It is about building bridges
+          so the next generation does not have to figure everything out alone.
+        </p>
+        <div class="founder-sig">
+          <div class="founder-av">K</div>
+          <div>
+            <div class="founder-name">Kenneth Moncur</div>
+            <div class="founder-title">Founder & Chief Architect · Kemis Group of Companies Inc.</div>
+          </div>
+        </div>
+        <div class="founder-links" style="margin-top:28px;">
+          <a href="#" class="founder-link">LinkedIn Profile →</a>
+          <a href="#" class="founder-link">YouTube Talks →</a>
+        </div>
+      </div>
+      <div class="founder-right fade-up" style="transition-delay:0.15s;">
+        <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.4);letter-spacing:0.04em;margin-bottom:20px;">The Vision — A Bahamas where:</div>
+        <ul class="founder-bullets">
+          <li class="founder-bullet">
+            <span class="fb-bullet">01</span>
+            <span class="fb-text">
+              <strong>Government spending is transparent and searchable</strong> — Citizens can
+              easily understand how public funds are allocated. BahamasOpenData makes this
+              accessible.
+            </span>
+          </li>
+          <li class="founder-bullet">
+            <span class="fb-bullet">02</span>
+            <span class="fb-text">
+              <strong>Students access world class digital education from anywhere in the country</strong>
+              — Kemis Academy prepares Bahamians for careers in AI and technology, without
+              requiring relocation.
+            </span>
+          </li>
+          <li class="founder-bullet">
+            <span class="fb-bullet">03</span>
+            <span class="fb-text">
+              <strong>Entrepreneurs participate in global commerce</strong> — KemisPay expands
+              digital payment access for freelancers and small businesses.
+            </span>
+          </li>
+          <li class="founder-bullet">
+            <span class="fb-bullet">04</span>
+            <span class="fb-text">
+              <strong>Legal information is understandable</strong> — LawBey helps citizens explore
+              Bahamian statutes and legal frameworks in plain language.
+            </span>
+          </li>
+          <li class="founder-bullet">
+            <span class="fb-bullet">05</span>
+            <span class="fb-text">
+              <strong>Local developers build local systems</strong> — Talent stays, grows, and
+              leads.
+            </span>
+          </li>
+        </ul>
+        <div style="margin-top:32px;padding:24px 28px;background:rgba(184,137,42,0.07);border:1px solid rgba(184,137,42,0.18);">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px;">The model</div>
+          <p style="font-size:13.5px;color:rgba(255,255,255,0.45);line-height:1.75;font-weight:300;">
+            Build locally. Scale responsibly. Each KGC brand contributes to a connected ecosystem
+            powered by The Verity Suite, our locally managed AI foundation. The goal is long term
+            national capacity, sustainable revenue, and technology that reflects the community it
+            serves.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PORTFOLIO ════ -->
+<section class="section portfolio" id="portfolio">
+  <div class="section-inner">
+    <div class="portfolio-intro">
+      <div class="fade-up">
+        <div class="eyebrow dark">The Portfolio</div>
+        <h2 class="section-h dark">13 Verticals.<br><em>One Connected Ecosystem.</em></h2>
+      </div>
+      <div class="fade-up" style="transition-delay:0.1s;">
+        <p class="section-p dark">
+          Every platform connects through VerityOS, our locally operated AI system. Together they
+          form a practical, partnership-ready ecosystem for Bahamian institutions, businesses, and
+          communities.
+        </p>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="product-card fade-up">
+        <span class="pc-badge flagship">Flagship</span>
+        <div class="pc-icon">⚡</div>
+        <div class="pc-tag">AI Operating System</div>
+        <div class="pc-name">VerityOS</div>
+        <p class="pc-desc">AI operating system designed for Bahamian institutions and organizations.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.05s;">
+        <span class="pc-badge live">Live</span>
+        <div class="pc-icon">📦</div>
+        <div class="pc-tag">Offline AI Terminal</div>
+        <div class="pc-name">VerityLite</div>
+        <p class="pc-desc">Offline AI terminal designed for resilient island access.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.1s;">
+        <span class="pc-badge live">Live</span>
+        <div class="pc-icon">⚖️</div>
+        <div class="pc-tag">Legal AI Platform</div>
+        <div class="pc-name">LawBey</div>
+        <p class="pc-desc">Legal AI platform grounded in official Bahamian statutes.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.15s;">
+        <span class="pc-badge live">Live</span>
+        <div class="pc-icon">📊</div>
+        <div class="pc-tag">Civic Data Platform</div>
+        <div class="pc-name">BahamasOpenData</div>
+        <p class="pc-desc">Searchable civic data platform built from official parliamentary documents.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.2s;">
+        <span class="pc-badge build">Building</span>
+        <div class="pc-icon">💳</div>
+        <div class="pc-tag">Local Payments</div>
+        <div class="pc-name">KemisPay</div>
+        <p class="pc-desc">Local payment infrastructure expanding access to global transactions.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.25s;">
+        <span class="pc-badge build">Building</span>
+        <div class="pc-icon">📞</div>
+        <div class="pc-tag">Virtual Call Center</div>
+        <div class="pc-name">VoiceWorks</div>
+        <p class="pc-desc">Virtual call center platform creating remote work opportunities.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.35s;">
+        <span class="pc-badge live">Live</span>
+        <div class="pc-icon">🎨</div>
+        <div class="pc-tag">Creative & Marketing</div>
+        <div class="pc-name">KemisDigital</div>
+        <p class="pc-desc">Our creative and marketing arm — websites, automation, branding for clients. The service arm that funds the mission.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.1s;">
+        <span class="pc-badge build">Building</span>
+        <div class="pc-icon">📧</div>
+        <div class="pc-tag">Local Communications</div>
+        <div class="pc-name">KemisEmail</div>
+        <p class="pc-desc">Locally managed digital communication systems.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.15s;">
+        <span class="pc-badge build">Building</span>
+        <div class="pc-icon">🎓</div>
+        <div class="pc-tag">Digital Education</div>
+        <div class="pc-name">Kemis Academy</div>
+        <p class="pc-desc">AI and digital skills training for Bahamians.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.2s;">
+        <span class="pc-badge live">Live</span>
+        <div class="pc-icon">👁️</div>
+        <div class="pc-tag">Anonymous Reporting</div>
+        <div class="pc-name">Side Eye</div>
+        <p class="pc-desc">Anonymous reporting platform designed to support community safety.</p>
+      </div>
+      <div class="product-card fade-up" style="transition-delay:0.25s;">
+        <span class="pc-badge build">Building</span>
+        <div class="pc-icon">🏝️</div>
+        <div class="pc-tag">Social Platform</div>
+        <div class="pc-name">PileIt</div>
+        <p class="pc-desc">Locally developed social platform focused on Bahamian connection.</p>
+      </div>
+    </div>
+
+    <!-- Verity Suite callout -->
+    <div class="verity-callout fade-up" style="margin-top:3px;">
+      <div class="vc-left">
+        <div class="eyebrow" style="color:var(--gold-l);">
+          <span style="display:block;width:24px;height:1px;background:var(--gold-l);"></span>
+          A Locally Managed AI Foundation
+        </div>
+        <h3>The Verity Suite</h3>
+        <p>The Verity Suite is our shared AI foundation — locally managed, partnership-ready, and designed to power every KGC platform with responsible intelligence.</p>
+      </div>
+      <div class="vc-right">
+        <div class="vc-item">
+          <div class="vc-item-icon">⚡</div>
+          <div>
+            <div class="vc-item-name">VerityOS Core</div>
+            <div class="vc-item-desc">The AI engine running across all verticals.</div>
+          </div>
+        </div>
+        <div class="vc-item">
+          <div class="vc-item-icon">🔐</div>
+          <div>
+            <div class="vc-item-name">Local Data Governance Layer</div>
+            <div class="vc-item-desc">Data hosted and managed with domestic oversight.</div>
+          </div>
+        </div>
+        <div class="vc-item">
+          <div class="vc-item-icon">🌐</div>
+          <div>
+            <div class="vc-item-name">Unified API Network</div>
+            <div class="vc-item-desc">All platforms connect through a shared infrastructure layer.</div>
+          </div>
+        </div>
+        <div class="vc-item">
+          <div class="vc-item-icon">📡</div>
+          <div>
+            <div class="vc-item-name">Offline Resilience</div>
+            <div class="vc-item-desc">VerityLite nodes help ensure continuity across islands.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY WE EXIST ════ -->
+<section class="section why" id="why">
+  <div class="section-inner">
+    <div class="fade-up" style="max-width:560px%;">
+      <div class="eyebrow dark">Why We Exist</div>
+      <h2 class="section-h dark">Digital consumer.<br>Or digital <em>owner.</em></h2>
+      <p class="section-p dark">Right now, most of the data, apps, and AI tools used in the Bahamas come from abroad. That means we don't own our future. We pay for infrastructure built for someone else's context. That ends here.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="fade-up">
+        <div class="why-stat-row">
+          <div class="why-stat">
+            <div class="ws-num">$0</div>
+            <div class="ws-text"><strong>retained locally</strong> for every dollar spent on foreign SaaS. The value leaves. The dependency stays.</div>
+          </div>
+          <div class="why-stat">
+            <div class="ws-num">100%</div>
+            <div class="ws-text"><strong>of Bahamian data</strong> should be owned by Bahamians. Not processed in data centres we don't control.</div>
+          </div>
+          <div class="why-stat">
+            <div class="ws-num">13</div>
+            <div class="ws-text"><strong>verticals built to replace</strong> foreign platform dependency with locally owned infrastructure. One at a time.</div>
+          </div>
+          <div class="why-stat">
+            <div class="ws-num">1st</div>
+            <div class="ws-text"><strong>in the Caribbean</strong> building an AI sovereign digital ecosystem. We are not following. We are leading.</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.15s;">
+        <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:var(--navy);letter-spacing:0.04em;margin-bottom:20px;opacity:0.6;">Before KGC vs With KGC</div>
+        <div class="why-comparison">
+          <div class="wc-col before">
+            <div class="wc-label">Before</div>
+            <ul class="wc-items">
+              <li class="wc-item">Data processed on foreign servers — you don't own it</li>
+              <li class="wc-item">Legal answers require expensive lawyers or foreign AI with no Bahamian context</li>
+              <li class="wc-item">Government budget data locked in PDFs no one can search</li>
+              <li class="wc-item">Freelancers can't get paid online without foreign bank accounts</li>
+              <li class="wc-item">AI tools built for the US/UK — applied poorly to local contexts</li>
+              <li class="wc-item">Tech talent trained here leaves — no local ecosystem to join</li>
+            </ul>
+          </div>
+          <div class="wc-col after">
+            <div class="wc-label">With KGC</div>
+            <ul class="wc-items">
+              <li class="wc-item">VerityOS runs locally — your data never leaves the country</li>
+              <li class="wc-item">LawBey grounds every answer in actual Bahamian statutes with citations</li>
+              <li class="wc-item">BahamasOpenData makes every dollar of public spending traceable</li>
+              <li class="wc-item">KemisPay connects Bahamian freelancers to global payments directly</li>
+              <li class="wc-item">AI trained on Bahamian data for Bahamian context — accurate, local, owned</li>
+              <li class="wc-item">13 growing products that need Bahamian engineers to build and maintain</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ VISION ════ -->
+<section class="vision" id="vision">
+  <div class="vision-inner">
+    <div class="vision-kicker fade-up">The Big Vision</div>
+    <h2 class="vision-headline fade-up" style="transition-delay:0.1s%;">
+      The first digitally<br>sovereign nation<br>
+      <em>in the Caribbean.</em>
+    </h2>
+    <p class="vision-sub fade-up" style="transition-delay:0.2s%;">
+      We are proving that small nations can lead the AI revolution on their own terms. Not by waiting for Silicon Valley to notice us. By building it ourselves — here, in Nassau, for the Caribbean and the world.
+    </p>
+    <div class="vision-milestones fade-up" style="transition-delay:0.3s%;">
+      <div class="vm">
+        <div class="vm-year">Now · 2025/26</div>
+        <p class="vm-text"><strong>Foundation:</strong> VerityOS live. LawBey, BahamasOpenData, KemisDigital operational. Team building. First government partnerships.</p>
+      </div>
+      <div class="vm">
+        <div class="vm-year">Phase 2 · 2026</div>
+        <p class="vm-text"><strong>Ecosystem:</strong> KemisPay live. GB Rewards Program launched. Kemis Academy accepting first cohort. 5 active government/EDU partnerships.</p>
+      </div>
+      <div class="vm">
+        <div class="vm-year">Phase 3 · 2027</div>
+        <p class="vm-text"><strong>Sovereignty:</strong> VerityLite in Bahamian schools. PileIt launched. Side Eye integrated with civic infrastructure. Local AI model trained.</p>
+      </div>
+      <div class="vm">
+        <div class="vm-year">Horizon · 2028+</div>
+        <p class="vm-text"><strong>Export:</strong> KGC model exported to Jamaica, Trinidad, Barbados. The Caribbean's first sovereign AI export. Built here. Scaled everywhere.</p>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.4s%;">
+      <a href="#careers" class="btn-primary" style="margin:0 auto;width:fit-content;display:inline-flex;">
+        Build this with us →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CAREERS ════ -->
+<section class="section careers" id="careers">
+  <div class="section-inner">
+    <div class="careers-intro">
+      <div class="fade-up">
+        <div class="eyebrow dark">Open Positions</div>
+        <h2 class="section-h dark">Actively<br><em>recruiting.</em></h2>
+        <p class="section-p dark" style="margin-top:16px%%;">We are building the digital infrastructure of a nation. We need engineers, communicators, and community builders who are serious about doing it right — from The Bahamas, for The Bahamas.</p>
+      </div>
+      <div class="fade-up" style="transition-delay:0.1s%;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;">
+        <div style="padding:28px 32px;background:var(--navy);color:white;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">Currently hiring</div>
+          <div style="font-family:'Cinzel',serif;font-size:38px;font-weight:700;color:var(--white);line-height:1%;">5</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.12em;margin-top:4px;">ACTIVE OPENINGS</div>
+        </div>
+        <div style="padding:20px 24px;background:var(--gold-wash);border:1px solid rgba(184,137,42,0.2);">
+          <div style="font-size:13px;color:var(--stone);line-height:1.7;">Remote-first. Bahamian-founded. Equity available for the right candidates. Building sovereign infrastructure for the long term.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-card fade-up">
+        <div class="rc-left">
+          <div class="rc-tag">Engineering</div>
+          <div class="rc-title">ML Specialist</div>
+          <p class="rc-desc">Machine learning model development, training, and optimization for VerityOS AI platforms. You will be building the core intelligence layer of Bahamian AI — trained on local data, for local context.</p>
+        </div>
+        <div class="rc-right">
+          <span class="rc-badge hiring">Hiring Now</span>
+          <a href="mailto:careers@thekemisgroup.com" class="rc-apply">Apply →</a>
+        </div>
+      </div>
+      <div class="role-card fade-up" style="transition-delay:0.05s%;">
+        <div class="rc-left">
+          <div class="rc-tag">Infrastructure</div>
+          <div class="rc-title">Networking Engineer</div>
+          <p class="rc-desc">Design and maintain secure, scalable network infrastructure for sovereign AI systems. This role builds the physical layer of Bahamian digital sovereignty — the pipes that everything else runs through.</p>
+        </div>
+        <div class="rc-right">
+          <span class="rc-badge hiring">Hiring Now</span>
+          <a href="mailto:careers@thekemisgroup.com" class="rc-apply">Apply →</a>
+        </div>
+      </div>
+      <div class="role-card fade-up" style="transition-delay:0.1s%;">
+        <div class="rc-left">
+          <div class="rc-tag">Infrastructure</div>
+          <div class="rc-title">Cloud Engineer Specialist</div>
+          <p class="rc-desc">Build and manage cloud infrastructure to support AI services and digital platforms. You define the architecture that keeps 13 verticals running — securely, locally, at scale.</p>
+        </div>
+        <div class="rc-right">
+          <span class="rc-badge hiring">Hiring Now</span>
+          <a href="mailto:careers@thekemisgroup.com" class="rc-apply">Apply →</a>
+        </div>
+      </div>
+      <div class="role-card fade-up" style="transition-delay:0.15s%;">
+        <div class="rc-left">
+          <div class="rc-tag">Engineering</div>
+          <div class="rc-title">Full Stack Developer</div>
+          <p class="rc-desc">Develop end-to-end solutions for KGC's AI-driven platforms and digital services. If you want to build products that your own community uses every day — this is the role.</p>
+        </div>
+        <div class="rc-right">
+          <span class="rc-badge hiring">Hiring Now</span>
+          <a href="mailto:careers@thekemisgroup.com" class="rc-apply">Apply →</a>
+        </div>
+      </div>
+      <div class="role-card fade-up" style="transition-delay:0.2s%;">
+        <div class="rc-left">
+          <div class="rc-tag">Partnerships</div>
+          <div class="rc-title">Government & EDU Liaison</div>
+          <p class="rc-desc">Builds partnerships with schools, ministries, and NGOs. Handles licensing negotiations, pilots, and deployment of Verity or VerityLite in national ecosystems. The bridge between the build and the people it serves.</p>
+        </div>
+        <div class="rc-right">
+          <span class="rc-badge hiring">Hiring Now</span>
+          <a href="mailto:careers@thekemisgroup.com" class="rc-apply">Apply →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="roles-future fade-up">
+      <div class="rf-label">Future Positions — Coming Soon</div>
+      <div class="rf-chips">
+        <span class="rf-chip">Public Relations Specialist</span>
+        <span class="rf-chip">Director of School Partnerships</span>
+        <span class="rf-chip">Education Programs Coordinator</span>
+        <span class="rf-chip">Education Policy & Government Affairs Officer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CONTACT STRIP ════ -->
+<div class="contact-strip">
+  <div class="cs-kicker">Build the future</div>
+  <h2 class="cs-headline">Sovereign Infrastructure<br>starts with a conversation.</h2>
+  <p class="cs-sub">Whether you're a school, a government ministry, an entrepreneur, or an engineer — there is a role for you in building this. Let's talk.</p>
+  <div class="cs-actions">
+    <a href="mailto:hello@thekemisgroup.com" class="btn-navy">Get in Touch</a>
+    <a href="#portfolio" class="btn-outline-navy">See All Verticals</a>
+  </div>
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="fb-mark">KEMIS</div>
+      <div class="fb-sub">Group of Companies Inc.</div>
+      <p class="fb-p">Sovereign Infrastructure for a Digital Future. Building locally owned AI, payments, communications, and education for The Bahamas and small nations everywhere.</p>
+      <div class="fb-legal">
+        © 2025 Kemis Group of Companies. All rights reserved.<br>
+        Nassau, The Bahamas · U.S.-based holding company<br>
+        thekemisgroup.com
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Portfolio</div>
+      <ul class="footer-links">
+        <li><a href="#">VerityOS</a></li>
+        <li><a href="#">VerityLite</a></li>
+        <li><a href="https://lawbey.com">LawBey</a></li>
+        <li><a href="https://bahamasopendata.com">BahamasOpenData</a></li>
+        <li><a href="#">KemisPay</a></li>
+        <li><a href="https://satisfied-light-production-da03.up.railway.app/">Anchor</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">More Verticals</div>
+      <ul class="footer-links">
+        <li><a href="https://kemisdigital.com">KemisDigital</a></li>
+        <li><a href="#">Kemis Academy</a></li>
+        <li><a href="#">Side Eye</a></li>
+        <li><a href="#">PileIt</a></li>
+        <li><a href="https://gbrewards.com">GB Rewards Program</a></li>
+        <li><a href="https://freeportsquares.com">Freeport Squares</a></li>
+        <li><a href="https://krmdesk.com">KRM</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#founder">The Founder</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="mailto:hello@thekemisgroup.com">Contact</a></li>
+        <li><a href="https://linkedin.com">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Kemis Group of Companies Inc. · Nassau, The Bahamas · <em>thekemisgroup.com</em></p>
+    <p style="color:var(--gold-l);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;">Sovereign Infrastructure · Digital Future</p>
+  </div>
+</footer>
+
+<script>
+/* Nav scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Fade-up observer */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
+
