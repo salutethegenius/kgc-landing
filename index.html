@@ -397,38 +397,74 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
 .pc-badge.build{background:rgba(184,137,42,0.08);color:var(--gold);border:1px solid rgba(184,137,42,0.2);}
 .pc-badge.flagship{background:rgba(15,31,61,0.06);color:var(--navy);border:1px solid rgba(15,31,61,0.12);}
 
-/* Verity suite callout */
-.verity-callout{
-  background:var(--navy);margin-top:3px;padding:52px 56px;
-  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+/* ═══ FLAGSHIP CARD ═══ */
+.flagship-card{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  padding:52px 56px;
+  background:var(--navy);color:var(--white);
+  border-left:4px solid var(--gold);
+  position:relative;overflow:hidden;
 }
-.vc-left h3{
-  font-family:'Cinzel',serif;font-size:22px;font-weight:600;
-  color:var(--white);letter-spacing:0.04em;margin-bottom:14px;
-  margin-top:12px;
+.flagship-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 80% 50%,rgba(184,137,42,0.06) 0%,transparent 60%);
+  pointer-events:none;
 }
-.vc-left p{
-  font-size:16px;font-weight:300;color:rgba(255,255,255,0.82);
-  line-height:1.9;
+.flagship-left{position:relative;z-index:1;}
+.flagship-badge{
+  display:inline-block;font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:18px;
+  background:rgba(184,137,42,0.12);color:var(--gold-l);
+  border:1px solid rgba(184,137,42,0.25);
 }
-.vc-right{display:flex;flex-direction:column;gap:12px;}
-.vc-item{
+.flagship-tag{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold-l);margin-bottom:10px;
+}
+.flagship-name{
+  font-family:'Cinzel',serif;font-size:clamp(28px,3vw,38px);font-weight:700;
+  color:var(--white);letter-spacing:0.04em;margin-bottom:14px;line-height:1.15;
+  text-decoration:none;display:block;
+}
+.flagship-name:hover{color:var(--gold-l);}
+.flagship-desc{
+  font-size:17px;font-weight:300;color:rgba(255,255,255,0.82);
+  line-height:1.85;max-width:480px;
+}
+.flagship-right{position:relative;z-index:1;display:flex;flex-direction:column;gap:12px;}
+.flagship-right .vc-item{
   display:flex;align-items:center;gap:14px;
   padding:14px 18px;background:rgba(255,255,255,0.03);
   border:1px solid var(--border-l);border-radius:4px;
   transition:background 0.2s;
 }
-.vc-item:hover{background:rgba(184,137,42,0.06);}
-.vc-item-icon{
+.flagship-right .vc-item:hover{background:rgba(184,137,42,0.06);}
+.flagship-right .vc-item-icon{
   width:32px;height:32px;background:rgba(184,137,42,0.1);
   border:1px solid rgba(184,137,42,0.2);border-radius:4px;
   display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
 }
-.vc-item-name{
+.flagship-right .vc-item-name{
   font-family:'Cinzel',serif;font-size:12px;font-weight:500;
   color:rgba(255,255,255,0.75);letter-spacing:0.04em;
 }
-.vc-item-desc{font-size:11px;color:rgba(255,255,255,0.28);margin-top:2px;}
+.flagship-right .vc-item-desc{font-size:11px;color:rgba(255,255,255,0.28);margin-top:2px;}
+
+/* ═══ PORTFOLIO GROUPS ═══ */
+.portfolio-group{margin-top:32px;}
+.portfolio-group-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--stone);margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.portfolio-group-label::before{
+  content:'';display:block;width:20px;height:1px;background:var(--gold);
+}
+.portfolio-group-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+}
 
 /* ════ WHY WE EXIST ════ */
 .why{background:var(--parch);}
@@ -666,7 +702,8 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
   .portfolio-grid{grid-template-columns:repeat(3,1fr);}
   .mission-grid{grid-template-columns:1fr;}
   .vision-milestones{grid-template-columns:repeat(2,1fr);}
-  .verity-callout{grid-template-columns:1fr;gap:36px;padding:36px 28px;}
+  .flagship-card{grid-template-columns:1fr;gap:28px;padding:36px 28px;}
+  .portfolio-group-grid{grid-template-columns:repeat(2,1fr);}
   .footer-top{grid-template-columns:1fr 1fr;gap:32px;}
   .footer{padding:56px 28px 32px;}
   .contact-strip{padding:64px 28px;}
@@ -674,7 +711,8 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
 @media(max-width:640px){
   .nav-links{display:none;}
   .hero{padding:96px 20px 72px;}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+  .portfolio-group-grid{grid-template-columns:1fr;}
+  .flagship-card{padding:28px 20px;}
   .vision-milestones{grid-template-columns:1fr;}
   .hero-stats-bar{display:none;}
   .footer-top{grid-template-columns:1fr;}
@@ -922,125 +960,17 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
       </div>
     </div>
 
-    <div class="portfolio-grid">
-      <div class="product-card fade-up">
-        <span class="pc-badge flagship">Flagship</span>
-        <div class="pc-icon">⚡</div>
-        <div class="pc-tag">AI Operating System</div>
-        <a href="https://www.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">VerityOS™</a>
-        <p class="pc-desc">AI operating system designed for Bahamian institutions and organizations.</p>
+    <!-- ═══ FLAGSHIP: VerityOS ═══ -->
+    <div class="flagship-card fade-up">
+      <div class="flagship-left">
+        <span class="flagship-badge">Flagship · AI Foundation</span>
+        <div class="flagship-tag">AI Operating System</div>
+        <a href="https://www.verityos.net/" class="flagship-name" target="_blank" rel="noopener noreferrer">VerityOS™</a>
+        <p class="flagship-desc">
+          The AI operating system at the center of everything we build. VerityOS runs locally, powers every KGC platform, and is designed for Bahamian institutions, businesses, and schools. This is the foundation.
+        </p>
       </div>
-      <div class="product-card fade-up" style="transition-delay:0.05s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">📦</div>
-        <div class="pc-tag">Offline AI Terminal</div>
-        <a href="https://www.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">VerityLite</a>
-        <p class="pc-desc">Offline AI terminal designed for resilient island access.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.08s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🛡️</div>
-        <div class="pc-tag">AI Audit Kernel</div>
-        <a href="https://audit.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">VerityOS™ Sovereign Audit Kernel</a>
-        <p class="pc-desc">Append-only, hash-chained audit layer for AI model calls with execution graphs and offline verification.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.12s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">⚖️</div>
-        <div class="pc-tag">Legal AI Platform</div>
-        <a href="https://lawbey.com/" class="pc-name" target="_blank" rel="noopener noreferrer">LawBey</a>
-        <p class="pc-desc">Legal AI platform grounded in official Bahamian statutes.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.17s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">📊</div>
-        <div class="pc-tag">Civic Data Platform</div>
-        <a href="https://bahamasopendata.com/" class="pc-name" target="_blank" rel="noopener noreferrer">BahamasOpenData</a>
-        <p class="pc-desc">Searchable civic data platform built from official parliamentary documents.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.2s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">💳</div>
-        <div class="pc-tag">Local Payments</div>
-        <a href="https://kemispay.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KemisPay</a>
-        <p class="pc-desc">Local payment infrastructure expanding access to global transactions.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.25s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🎁</div>
-        <div class="pc-tag">Loyalty & Rewards</div>
-        <a href="https://gbrewards.com/" class="pc-name" target="_blank" rel="noopener noreferrer">GB Rewards Program</a>
-        <p class="pc-desc">A national rewards and loyalty network connecting Bahamian shoppers and merchants. See gbrewards.com for details.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.3s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🏬</div>
-        <div class="pc-tag">Retail & Community</div>
-        <a href="https://freeportsquares.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Freeport Squares</a>
-        <p class="pc-desc">A mixed-use commercial hub and digital marketplace centered in Grand Bahama. Visit freeportsquares.com for more.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.32s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">🛒</div>
-        <div class="pc-tag">Local Commerce</div>
-        <a href="https://mygrandbridge.com/" class="pc-name" target="_blank" rel="noopener noreferrer">GrandBridge</a>
-        <p class="pc-desc">Get your store online in days, not months. A simple ordering system built for Freeport retailers to increase basket size, cut down phone orders, and keep customers coming back.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.35s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🎨</div>
-        <div class="pc-tag">Creative & Marketing</div>
-        <a href="https://kemisdigital.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KemisDigital</a>
-        <p class="pc-desc">Our creative and marketing arm — websites, automation, branding for clients. The service arm that funds the mission.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.4s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🛠️</div>
-        <div class="pc-tag">Service Desk Platform</div>
-        <a href="https://krmdesk.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KRM</a>
-        <p class="pc-desc">A Bahamian-built support and service desk platform with clear, trackable workflows. Learn more at krmdesk.com.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.45s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">🎓</div>
-        <div class="pc-tag">Digital Education</div>
-        <a href="https://kemisacademy.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Kemis Academy</a>
-        <p class="pc-desc">AI and digital skills training for Bahamians.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.5s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">👁️</div>
-        <div class="pc-tag">Anonymous Reporting</div>
-        <a href="https://sideeyebs.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Side Eye</a>
-        <p class="pc-desc">Anonymous reporting platform designed to support community safety.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.55s;">
-        <span class="pc-badge build">Building</span>
-        <div class="pc-icon">🏝️</div>
-        <div class="pc-tag">Social Platform</div>
-        <div class="pc-name">PileIt</div>
-        <p class="pc-desc">Locally developed social platform focused on Bahamian connection.</p>
-      </div>
-      <div class="product-card fade-up" style="transition-delay:0.6s;">
-        <span class="pc-badge live">Live</span>
-        <div class="pc-icon">🔐</div>
-        <div class="pc-tag">Encrypted Document Vault</div>
-        <a href="https://anchor.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">Anchor</a>
-        <p class="pc-desc">Zero-knowledge encrypted vault for Bahamian passport & NIB documents with guardian-based recovery.</p>
-      </div>
-    </div>
-
-    <!-- Verity Suite callout -->
-    <div class="verity-callout fade-up" style="margin-top:3px;">
-      <div class="vc-left">
-        <div class="eyebrow" style="color:var(--gold-l);">
-          <span style="display:block;width:24px;height:1px;background:var(--gold-l);"></span>
-          A Locally Managed AI Foundation
-        </div>
-        <h3>The Verity Suite</h3>
-        <p>The Verity Suite is our shared AI foundation — locally managed, partnership-ready, and designed to power every KGC platform with responsible intelligence.</p>
-      </div>
-      <div class="vc-right">
+      <div class="flagship-right">
         <div class="vc-item">
           <div class="vc-item-icon">⚡</div>
           <div>
@@ -1051,7 +981,7 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
         <div class="vc-item">
           <div class="vc-item-icon">🔐</div>
           <div>
-            <div class="vc-item-name">Local Data Governance Layer</div>
+            <div class="vc-item-name">Local Data Governance</div>
             <div class="vc-item-desc">Data hosted and managed with domestic oversight.</div>
           </div>
         </div>
@@ -1066,8 +996,134 @@ body{font-family:'Barlow',sans-serif;background:var(--navy);color:var(--white);o
           <div class="vc-item-icon">📡</div>
           <div>
             <div class="vc-item-name">Offline Resilience</div>
-            <div class="vc-item-desc">VerityLite nodes help ensure continuity across islands.</div>
+            <div class="vc-item-desc">VerityLite nodes ensure continuity across islands.</div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CORE PLATFORM ═══ -->
+    <div class="portfolio-group">
+      <div class="portfolio-group-label">Core Platform</div>
+      <div class="portfolio-group-grid">
+        <div class="product-card fade-up">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">📦</div>
+          <div class="pc-tag">Offline AI Terminal</div>
+          <a href="https://www.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">VerityLite</a>
+          <p class="pc-desc">Offline AI terminal designed for resilient island access.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.05s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🛡️</div>
+          <div class="pc-tag">AI Audit Kernel</div>
+          <a href="https://audit.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">VerityOS™ Sovereign Audit Kernel</a>
+          <p class="pc-desc">Append-only, hash-chained audit layer for AI model calls with execution graphs and offline verification.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.1s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🔐</div>
+          <div class="pc-tag">Encrypted Document Vault</div>
+          <a href="https://anchor.verityos.net/" class="pc-name" target="_blank" rel="noopener noreferrer">Anchor</a>
+          <p class="pc-desc">Zero-knowledge encrypted vault for Bahamian passport & NIB documents with guardian-based recovery.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CIVIC & LEGAL ═══ -->
+    <div class="portfolio-group">
+      <div class="portfolio-group-label">Civic & Legal</div>
+      <div class="portfolio-group-grid">
+        <div class="product-card fade-up">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">⚖️</div>
+          <div class="pc-tag">Legal AI Platform</div>
+          <a href="https://lawbey.com/" class="pc-name" target="_blank" rel="noopener noreferrer">LawBey</a>
+          <p class="pc-desc">Legal AI platform grounded in official Bahamian statutes.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.05s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">📊</div>
+          <div class="pc-tag">Civic Data Platform</div>
+          <a href="https://bahamasopendata.com/" class="pc-name" target="_blank" rel="noopener noreferrer">BahamasOpenData</a>
+          <p class="pc-desc">Searchable civic data platform built from official parliamentary documents.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.1s;">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">👁️</div>
+          <div class="pc-tag">Anonymous Reporting</div>
+          <a href="https://sideeyebs.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Side Eye</a>
+          <p class="pc-desc">Anonymous reporting platform designed to support community safety.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ COMMERCE & INFRASTRUCTURE ═══ -->
+    <div class="portfolio-group">
+      <div class="portfolio-group-label">Commerce & Infrastructure</div>
+      <div class="portfolio-group-grid">
+        <div class="product-card fade-up">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">💳</div>
+          <div class="pc-tag">Local Payments</div>
+          <a href="https://kemispay.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KemisPay</a>
+          <p class="pc-desc">Local payment infrastructure expanding access to global transactions.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.05s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🎁</div>
+          <div class="pc-tag">Loyalty & Rewards</div>
+          <a href="https://gbrewards.com/" class="pc-name" target="_blank" rel="noopener noreferrer">GB Rewards Program</a>
+          <p class="pc-desc">A national rewards and loyalty network connecting Bahamian shoppers and merchants.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.1s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🏬</div>
+          <div class="pc-tag">Retail & Community</div>
+          <a href="https://freeportsquares.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Freeport Squares</a>
+          <p class="pc-desc">A mixed-use commercial hub and digital marketplace centered in Grand Bahama.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.15s;">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">🛒</div>
+          <div class="pc-tag">Local Commerce</div>
+          <a href="https://mygrandbridge.com/" class="pc-name" target="_blank" rel="noopener noreferrer">GrandBridge</a>
+          <p class="pc-desc">Simple ordering system built for Freeport retailers to get online in days, not months.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.2s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🛠️</div>
+          <div class="pc-tag">Service Desk Platform</div>
+          <a href="https://krmdesk.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KRM</a>
+          <p class="pc-desc">Bahamian-built support and service desk platform with clear, trackable workflows.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ EDUCATION & COMMUNITY ═══ -->
+    <div class="portfolio-group">
+      <div class="portfolio-group-label">Education & Community</div>
+      <div class="portfolio-group-grid">
+        <div class="product-card fade-up">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">🎓</div>
+          <div class="pc-tag">Digital Education</div>
+          <a href="https://kemisacademy.com/" class="pc-name" target="_blank" rel="noopener noreferrer">Kemis Academy</a>
+          <p class="pc-desc">AI and digital skills training for Bahamians.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.05s;">
+          <span class="pc-badge live">Live</span>
+          <div class="pc-icon">🎨</div>
+          <div class="pc-tag">Creative & Marketing</div>
+          <a href="https://kemisdigital.com/" class="pc-name" target="_blank" rel="noopener noreferrer">KemisDigital</a>
+          <p class="pc-desc">The creative and marketing arm — websites, automation, branding. The service arm that funds the mission.</p>
+        </div>
+        <div class="product-card fade-up" style="transition-delay:0.1s;">
+          <span class="pc-badge build">Building</span>
+          <div class="pc-icon">🏝️</div>
+          <div class="pc-tag">Social Platform</div>
+          <div class="pc-name">PileIt</div>
+          <p class="pc-desc">Locally developed social platform focused on Bahamian connection.</p>
         </div>
       </div>
     </div>
