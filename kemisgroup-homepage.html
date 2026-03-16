@@ -1232,7 +1232,7 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
 /* Portfolio card click-throughs */
-document.querySelectorAll('.portfolio-grid .product-card').forEach(card => {
+document.querySelectorAll('.portfolio .product-card').forEach(card => {
   const link = card.querySelector('.pc-name[href]');
   if (!link) return;
   card.addEventListener('click', (event) => {
