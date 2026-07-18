@@ -4,7 +4,11 @@ import { resolve } from "node:path";
 const SITE_URL = "https://thekemisgroup.com";
 
 const urls = [
-  "/", // Primary homepage
+  "/",
+  "/portfolio.html",
+  "/about.html",
+  "/vision.html",
+  "/careers.html",
 ];
 
 const sitemapEntries = urls
@@ -28,4 +32,3 @@ const outPath = resolve(projectRoot, "public", "sitemap.xml");
 await writeFile(outPath, sitemap.trim() + "\n", "utf8");
 
 console.log(`sitemap.xml generated at ${outPath}`);
-
