@@ -56,9 +56,10 @@
     <li><a href="/about.html">About</a></li>
     <li><a href="/vision.html">Vision</a></li>
     <li><a href="/careers.html" class="active">Careers</a></li>
-    <li><a href="/careers.html" class="nav-cta-mobile">Join the Build</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact.html" class="nav-cta-mobile">Get in Touch</a></li>
   </ul>
-  <a href="/careers.html" class="nav-cta">Join the Build</a>
+  <a href="/contact.html" class="nav-cta">Get in Touch</a>
 </nav>
 
 <section class="section careers" id="careers" style="padding-top:140px;">
@@ -72,7 +73,7 @@
       <div class="fade-up" style="transition-delay:0.1s;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;">
         <div style="padding:28px 32px;background:var(--navy);color:white;">
           <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;">Collaboration focus</div>
-          <div style="font-family:'Cinzel',serif;font-size:38px;font-weight:700;color:var(--white);line-height:1;">3</div>
+          <div style="font-family:'Cinzel',serif;font-size:38px;font-weight:700;color:var(--white);line-height:1;">2</div>
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.12em;margin-top:4px;">PRIORITY ROLES</div>
         </div>
         <div style="padding:20px 24px;background:var(--gold-wash);border:1px solid rgba(184,137,42,0.2);">
@@ -89,27 +90,17 @@
           <p class="rc-desc">Collaborate on VerityOS and its local AI data pipelines. Model evaluation, dataset ownership, and tooling that scales with sovereign infrastructure requirements. Hands-on production AI experience required.</p>
         </div>
         <div class="rc-right">
-          <a href="https://www.linkedin.com/in/kennethmoncur/" target="_blank" rel="noopener noreferrer" class="rc-apply">Message Kenneth on LinkedIn →</a>
+          <a href="/careers.html#application-form" class="rc-apply" data-role="ML & Big Data Specialist">Apply now →</a>
         </div>
       </div>
       <div class="role-card fade-up" style="transition-delay:0.05s;">
-        <div class="rc-left">
-          <div class="rc-tag">Engineering</div>
-          <div class="rc-title">Full Stack Developer</div>
-          <p class="rc-desc">Ship frontends, APIs, and integrations across the KGC portfolio. Comfortable working across products, reusing shared patterns, and delivering production systems that serve Bahamian users.</p>
-        </div>
-        <div class="rc-right">
-          <a href="https://www.linkedin.com/in/kennethmoncur/" target="_blank" rel="noopener noreferrer" class="rc-apply">Message Kenneth on LinkedIn →</a>
-        </div>
-      </div>
-      <div class="role-card fade-up" style="transition-delay:0.1s;">
         <div class="rc-left">
           <div class="rc-tag">Operations</div>
           <div class="rc-title">Project Manager</div>
           <p class="rc-desc">Help coordinate multi-vertical rollouts, pilots, and partnerships across the KGC group - including with governments, banks, and institutional buyers throughout The Bahamas.</p>
         </div>
         <div class="rc-right">
-          <a href="https://www.linkedin.com/in/kennethmoncur/" target="_blank" rel="noopener noreferrer" class="rc-apply">Message Kenneth on LinkedIn →</a>
+          <a href="/careers.html#application-form" class="rc-apply" data-role="Project Manager">Apply now →</a>
         </div>
       </div>
     </div>
@@ -123,6 +114,80 @@
         <span class="rf-chip">Education Policy & Government Affairs Officer</span>
       </div>
     </div>
+
+    <div class="careers-form-section fade-up" id="application-form" style="margin-top:64px;padding:48px;background:white;border-left:3px solid var(--gold);">
+      <div class="eyebrow dark">Application</div>
+      <h2 class="section-h dark" style="margin-bottom:20px;">Apply to build with us.</h2>
+      <p class="section-p dark" style="margin-bottom:32px;">Submit a structured application. We review every one. You can also reach Kenneth on <a href="https://www.linkedin.com/in/kennethmoncur/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:500;">LinkedIn</a> if you prefer.</p>
+
+      <form class="contact-form" id="careersForm" action="mailto:hello@thekemisgroup.com" method="GET" enctype="text/plain">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="apply-name">Full name</label>
+            <input type="text" id="apply-name" name="name" required>
+          </div>
+          <div class="form-field">
+            <label for="apply-email">Email</label>
+            <input type="email" id="apply-email" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="apply-role">Role</label>
+            <select id="apply-role" name="role" required>
+              <option value="">Select a role</option>
+              <option value="ML & Big Data Specialist">ML & Big Data Specialist</option>
+              <option value="Project Manager">Project Manager</option>
+              <option value="Other / Future role">Other / Future role</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="apply-location">Location</label>
+            <input type="text" id="apply-location" name="location" placeholder="Island / City" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="apply-availability">Availability</label>
+            <select id="apply-availability" name="availability" required>
+              <option value="">Select availability</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Internship">Internship</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="apply-right-to-work">Right to work in The Bahamas</label>
+            <select id="apply-right-to-work" name="right_to_work" required>
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="In process">In process</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="apply-portfolio">Portfolio or Résumé link</label>
+            <input type="url" id="apply-portfolio" name="portfolio" placeholder="https://...">
+          </div>
+          <div class="form-field">
+            <label for="apply-compensation">Compensation expectations</label>
+            <input type="text" id="apply-compensation" name="compensation" placeholder="Salary / equity / contract rate">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="apply-example">Relevant work example</label>
+          <textarea id="apply-example" name="work_example" placeholder="Describe a project, problem, or system you have built that is relevant to this role." required></textarea>
+        </div>
+        <div class="form-field">
+          <label for="apply-mission">Why this mission?</label>
+          <textarea id="apply-mission" name="mission_answer" placeholder="In a few sentences, tell us why building Bahamian digital infrastructure matters to you." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Submit Application →</button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -131,7 +196,7 @@
   <h2 class="cs-headline">Independent Digital Infrastructure<br>starts with a conversation.</h2>
   <p class="cs-sub">Whether you're a school, a government ministry, an entrepreneur, or an engineer - there is a role for you in building this. Let's talk.</p>
   <div class="cs-actions">
-    <a href="mailto:frontdesk@kemisdigital.com" class="btn-navy">Get in Touch</a>
+    <a href="/contact.html" class="btn-navy">Get in Touch</a>
     <a href="/portfolio.html" class="btn-outline-navy">See All Verticals</a>
   </div>
 </div>
@@ -153,9 +218,10 @@
       <ul class="footer-links">
         <li><a href="/about.html">About</a></li>
         <li><a href="/portfolio.html">Portfolio</a></li>
-        <li><a href="/about.html#mission">Mission</a></li>
         <li><a href="/vision.html">Vision</a></li>
+        <li><a href="/progress.html">Progress</a></li>
         <li><a href="/careers.html">Careers</a></li>
+        <li><a href="/contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
@@ -172,7 +238,7 @@
       <div class="footer-col-title">Reach</div>
       <ul class="footer-links">
         <li><a href="/about.html">The Bahamas</a></li>
-        <li><a href="mailto:hello@thekemisgroup.com">Contact</a></li>
+        <li><a href="/contact.html">Contact</a></li>
         <li><a href="/careers.html">Careers</a></li>
       </ul>
     </div>
@@ -184,5 +250,30 @@
 </footer>
 
 <script type="module" src="/js/site.js"></script>
+<script>
+  document.querySelectorAll('.rc-apply[data-role]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const role = link.getAttribute('data-role');
+      const select = document.getElementById('apply-role');
+      if (select) select.value = role;
+    });
+  });
+
+  document.getElementById('careersForm').addEventListener('submit', function(e) {
+    const form = e.target;
+    const role = form.role.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const location = form.location.value;
+    const availability = form.availability.value;
+    const rightToWork = form.right_to_work.value;
+    const portfolio = form.portfolio.value || 'Not provided';
+    const compensation = form.compensation.value || 'Not provided';
+    const workExample = form.work_example.value;
+    const missionAnswer = form.mission_answer.value;
+    const body = `Role: ${encodeURIComponent(role)}%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ALocation: ${encodeURIComponent(location)}%0AAvailability: ${encodeURIComponent(availability)}%0ARight to work: ${encodeURIComponent(rightToWork)}%0APortfolio/Résumé: ${encodeURIComponent(portfolio)}%0ACompensation expectations: ${encodeURIComponent(compensation)}%0A%0ARelevant work example:%0A${encodeURIComponent(workExample)}%0A%0AWhy this mission:%0A${encodeURIComponent(missionAnswer)}`;
+    form.action = `mailto:hello@thekemisgroup.com?subject=${encodeURIComponent('KGC Careers Application: ' + role)}&body=${body}`;
+  });
+</script>
 </body>
 </html>

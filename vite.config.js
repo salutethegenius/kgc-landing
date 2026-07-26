@@ -10,6 +10,8 @@ export default defineConfig({
         about: resolve(__dirname, 'about.html'),
         vision: resolve(__dirname, 'vision.html'),
         careers: resolve(__dirname, 'careers.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        progress: resolve(__dirname, 'progress.html'),
       },
     },
   },
