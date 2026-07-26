@@ -97,7 +97,11 @@
     </div>
 
     <div class="contact-form-section" id="form">
-      <form class="contact-form fade-up" id="contactForm" action="mailto:hello@thekemisgroup.com" method="GET" enctype="text/plain">
+      <form class="contact-form fade-up" id="contactForm">
+        <div class="form-field" style="display:none;" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-row">
           <div class="form-field">
             <label for="name">Full name</label>
@@ -131,6 +135,7 @@
           <textarea id="message" name="message" placeholder="Tell us what you are working on, what problem you are trying to solve, or what you need to know." required></textarea>
         </div>
         <button type="submit" class="form-submit">Send Message →</button>
+        <div id="formMessage" style="margin-top:18px;font-size:14px;color:var(--stone);line-height:1.6;"></div>
       </form>
       <div class="contact-note fade-up">
         <h3>What happens next</h3>
@@ -202,16 +207,46 @@
     });
   });
 
-  // Build a clean mailto body from form fields
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const org = form.organization.value || 'Not provided';
-    const reason = form.reason.value;
-    const message = form.message.value;
-    const body = `Reason: ${reason}%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0AOrganization: ${encodeURIComponent(org)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
-    form.action = `mailto:hello@thekemisgroup.com?subject=${encodeURIComponent('KGC inquiry: ' + reason)}&body=${body}`;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const messageEl = document.getElementById('formMessage');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    messageEl.textContent = '';
+    messageEl.style.color = 'var(--stone)';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value,
+          email: form.email.value,
+          organization: form.organization.value,
+          reason: form.reason.value,
+          message: form.message.value,
+          website: form.website.value,
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success) {
+        messageEl.textContent = 'Thank you. Your message has been sent. We will respond within two business days.';
+        messageEl.style.color = '#1a8a4a';
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send');
+      }
+    } catch (err) {
+      console.error(err);
+      messageEl.textContent = 'Something went wrong. Please email hello@thekemisgroup.com directly or try again.';
+      messageEl.style.color = '#c44';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message →';
+    }
   });
 </script>
 </body>

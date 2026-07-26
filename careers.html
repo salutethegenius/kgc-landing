@@ -120,7 +120,11 @@
       <h2 class="section-h dark" style="margin-bottom:20px;">Apply to build with us.</h2>
       <p class="section-p dark" style="margin-bottom:32px;">Submit a structured application. We review every one. You can also reach Kenneth on <a href="https://www.linkedin.com/in/kennethmoncur/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:500;">LinkedIn</a> if you prefer.</p>
 
-      <form class="contact-form" id="careersForm" action="mailto:hello@thekemisgroup.com" method="GET" enctype="text/plain">
+      <form class="contact-form" id="careersForm">
+        <div class="form-field" style="display:none;" aria-hidden="true">
+          <label for="apply-website">Website</label>
+          <input type="text" id="apply-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-row">
           <div class="form-field">
             <label for="apply-name">Full name</label>
@@ -186,6 +190,7 @@
           <textarea id="apply-mission" name="mission_answer" placeholder="In a few sentences, tell us why building Bahamian digital infrastructure matters to you." required></textarea>
         </div>
         <button type="submit" class="form-submit">Submit Application →</button>
+        <div id="careersFormMessage" style="margin-top:18px;font-size:14px;color:var(--stone);line-height:1.6;"></div>
       </form>
     </div>
   </div>
@@ -259,20 +264,51 @@
     });
   });
 
-  document.getElementById('careersForm').addEventListener('submit', function(e) {
+  document.getElementById('careersForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
     const form = e.target;
-    const role = form.role.value;
-    const name = form.name.value;
-    const email = form.email.value;
-    const location = form.location.value;
-    const availability = form.availability.value;
-    const rightToWork = form.right_to_work.value;
-    const portfolio = form.portfolio.value || 'Not provided';
-    const compensation = form.compensation.value || 'Not provided';
-    const workExample = form.work_example.value;
-    const missionAnswer = form.mission_answer.value;
-    const body = `Role: ${encodeURIComponent(role)}%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ALocation: ${encodeURIComponent(location)}%0AAvailability: ${encodeURIComponent(availability)}%0ARight to work: ${encodeURIComponent(rightToWork)}%0APortfolio/Résumé: ${encodeURIComponent(portfolio)}%0ACompensation expectations: ${encodeURIComponent(compensation)}%0A%0ARelevant work example:%0A${encodeURIComponent(workExample)}%0A%0AWhy this mission:%0A${encodeURIComponent(missionAnswer)}`;
-    form.action = `mailto:hello@thekemisgroup.com?subject=${encodeURIComponent('KGC Careers Application: ' + role)}&body=${body}`;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const messageEl = document.getElementById('careersFormMessage');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    messageEl.textContent = '';
+    messageEl.style.color = 'var(--stone)';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          role: form.role.value,
+          name: form.name.value,
+          email: form.email.value,
+          location: form.location.value,
+          availability: form.availability.value,
+          right_to_work: form.right_to_work.value,
+          portfolio: form.portfolio.value,
+          compensation: form.compensation.value,
+          work_example: form.work_example.value,
+          mission_answer: form.mission_answer.value,
+          website: form.website.value,
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success) {
+        messageEl.textContent = 'Thank you. Your application has been sent. We will be in touch soon.';
+        messageEl.style.color = '#1a8a4a';
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Failed to send');
+      }
+    } catch (err) {
+      console.error(err);
+      messageEl.textContent = 'Something went wrong. Please email hello@thekemisgroup.com directly or try again.';
+      messageEl.style.color = '#c44';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application →';
+    }
   });
 </script>
 </body>
