@@ -3,11 +3,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const RECIPIENTS = {
-  default: ['hello@thekemisgroup.com'],
-  careers: ['hello@thekemisgroup.com'],
-  investor: ['hello@thekemisgroup.com'],
-  partnership: ['hello@thekemisgroup.com'],
-  demo: ['hello@thekemisgroup.com'],
+  default: [process.env.NOTIFY_EMAIL || 'frontdesk@kemisdigital.com'],
 };
 
 export default async function handler(req, res) {
@@ -36,7 +32,7 @@ export default async function handler(req, res) {
       }
 
       subject = `KGC Careers Application: ${body.role}`;
-      to = RECIPIENTS.careers;
+      to = RECIPIENTS.default;
       replyTo = body.email;
       html = `
         <h2>Careers Application</h2>
@@ -61,7 +57,7 @@ export default async function handler(req, res) {
       }
 
       subject = `KGC inquiry: ${body.reason}`;
-      to = RECIPIENTS[body.reason] || RECIPIENTS.default;
+      to = RECIPIENTS.default;
       replyTo = body.email;
       html = `
         <h2>Contact Form Submission</h2>
