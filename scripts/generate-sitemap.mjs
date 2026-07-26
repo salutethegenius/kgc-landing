@@ -9,6 +9,8 @@ const urls = [
   "/about.html",
   "/vision.html",
   "/careers.html",
+  "/contact.html",
+  "/progress.html",
 ];
 
 const sitemapEntries = urls
