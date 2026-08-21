@@ -12,6 +12,7 @@ export default defineConfig({
         careers: resolve(__dirname, 'careers.html'),
         contact: resolve(__dirname, 'contact.html'),
         progress: resolve(__dirname, 'progress.html'),
+        press: resolve(__dirname, 'press.html'),
       },
     },
   },
