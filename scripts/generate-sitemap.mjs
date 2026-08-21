@@ -11,6 +11,7 @@ const urls = [
   "/careers.html",
   "/contact.html",
   "/progress.html",
+  "/press.html",
 ];
 
 const sitemapEntries = urls
